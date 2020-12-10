@@ -1,0 +1,17 @@
+server:
+  port: 9901
+
+spring:
+  application:
+    name: monitor-server
+
+management:
+  endpoint:
+    health:
+      show-details: always
+    
+turbine:
+  aggregator:
+    # 由于从Eureka返回的值是大写的，所以这里必须大写
+    cluster-config: ORDER-SERVER
+  app-config: order-server 

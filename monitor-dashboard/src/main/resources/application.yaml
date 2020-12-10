@@ -1,0 +1,6 @@
+server:
+  port: 9902
+
+spring:
+  application:
+    name: monitor-dashboard

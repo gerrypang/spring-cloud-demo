@@ -1,0 +1,50 @@
+server:
+  port: 7070
+  
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          # 仓库地址
+          uri: https://github.com/gerrypang/spring-cloud-demo
+          # 搜索目录，配置文件放在指定的git仓库子目录中
+          search-paths: 
+            # 多个使用数组形式
+            - config/*
+          username: watcher@aliyun.com
+          password: pgw19900609
+          # 启动时clone指定git仓库，可以快速识别错误的配置资源
+          clone-on-start: true
+          # clone配置文件服务本地存储路径
+          basedir: /tmp/
+          # 配置服务器将等待获取HTTP连接的时间（以秒为单位）,默认5秒
+          timeout: 5000
+          # 配置服务器对Git服务器的SSL证书的验证
+          skipSslValidation: false
+          # 可以使用来控制配置服务器多久从Git后端获取更新的配置数据spring.cloud.config.server.git.refreshRate。以秒为单位指定此属性的值。
+          # 默认情况下，该值为0，这意味着配置服务器将在每次请求时从Git存储库中获取更新的配置。
+          refresh-rate: 0
+          
+  # spring bus 使用rabbitMQ        
+  rabbitmq:
+    addresses: 127.0.0.1:5672
+    username: guest
+    password: guest
+    
+    
+eureka:
+  client:
+    # 代表不向注册中心注册自己
+    register-with-eureka: true 
+    # 向注册中心检索服务
+    fetch-registry: true 
+    service-url: 
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+   
+   
+    

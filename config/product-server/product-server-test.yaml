@@ -1,0 +1,31 @@
+env: test
+spring:
+  application:
+    name: product-server      
+    
+server: 
+  port: 8081                    
+  
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+  compression:
+    request:
+      enabled: true
+      min-request-size: 2048
+      mime-types:
+      - application/json
+      - application/xml
+      - text/xml
+    response:
+      enabled: true
+      useGzipDecoder: true
+
+      
+      
+      

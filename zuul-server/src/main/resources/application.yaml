@@ -1,0 +1,28 @@
+server: 
+  port: 9000                    
+
+zuul:
+  # 忽略的路径
+  ignored-patterns:
+  # 忽略所有包含/api/的路径
+  - /**/api/** 
+  
+  # 丢弃的Header，这些header不会传播到其他微服务中 
+  ignored-headers:
+  - header1
+  - header2
+  
+  routes: 
+    # order-route只是一个自定义的路由名称
+    order-route: 
+      service-id: order-server
+      # 关闭敏感header
+      sensitive-headers: 
+      # server-id对应的路径
+      path: /order/** 
+      
+    provider-route:
+      service-id: provider-server
+      path: /provider/**
+  
+     

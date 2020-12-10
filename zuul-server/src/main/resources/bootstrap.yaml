@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: gateway-server
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    metadata-map: 
+      metadata: hello-world-1

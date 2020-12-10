@@ -1,0 +1,16 @@
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    # Eureka实例的状态页面
+    statusPageUrlPath: /info
+    # Eureka运行状况指示器
+    healthCheckUrlPath: /health
+    prefer-ip-address: true
+    metadata-map: 
+      metadata: hello-world-1
+      
+      
+      

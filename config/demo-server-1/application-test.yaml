@@ -1,0 +1,20 @@
+env: testccc000
+
+server: 
+  port: 8081                    
+
+
+feign:
+  compression:
+    request:
+      enabled: true
+      min-request-size: 2048
+      mime-types:
+      - application/json
+      - application/xml
+      - text/xml
+    response:
+      enabled: true
+      
+      
+      

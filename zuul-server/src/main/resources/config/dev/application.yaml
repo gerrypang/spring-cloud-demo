@@ -1,0 +1,39 @@
+server: 
+  port: 8080                    
+
+
+eureka:
+  client:
+    # eureka.client.healthcheck.enabled=true只能在application.yml中设置。设置bootstrap.yml中的值将导致不良副作用，例如在eureka中注册UNKNOWN状态。
+    healthcheck:
+      enabled: true
+
+
+spring:
+  application:
+    name: gateway-server
+    gateway:
+      routes:
+#      - id: host_route
+#        uri: https://example.org
+#        predicates:
+#        - Host=**.somehost.org,**.anotherhost.org
+#      - id: method_route
+#        uri: https://example.org
+#        predicates:
+#        - Method=GET,POST
+      - id: path_route
+        uri: http://127.0.0.1
+        predicates:
+        - Path=/red/{segment},/blue/{segment}
+      # 80% of traffic to weighthigh.org
+      - id: weight_high
+        uri: https://weighthigh.org
+        predicates:
+        - Weight=group1, 8
+      # 20% of traffic to weightlow.org
+      - id: weight_low
+        uri: https://weightlow.org
+        predicates:
+        - Weight=group1, 2
+
